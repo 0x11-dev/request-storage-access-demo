@@ -21,7 +21,7 @@ SameSite策略默认支持Lax、None、Strict。https://github.com/GoogleChromeL
 
 ### Safari:
 
-可以使用`Storage Access API`，demo见 当前repo。 https://webkit.org/blog/8124/introducing-storage-access-api/。
+可以使用`Storage Access API`，demo见 [index.js](https://github.com/0x11-dev/request-storage-access-demo/blob/master/index.js)。相关API可以参考: https://webkit.org/blog/8124/introducing-storage-access-api/。
 
 原理比较简单，先尝试写一个Cookie，例如 `_same_site_flag_=true, secure, sameSite=None`，如果服务端读到了，则认为same_site策略可用，否则使用`Storage Access API`尝试申请授权`document.requestStorageAccess()`.
 
