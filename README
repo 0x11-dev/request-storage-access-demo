@@ -1,0 +1,33 @@
+# Safari/Firefox 默认禁用第三方Cookie解决方案
+
+## 背景
+
+Firefox 2019.09 宣布 从 firefox 69.0开始，默认开启禁用第三方Cookie。 Apple 2020.03 宣布从iPadOS 13.4 and Safari 13.1 on macOS开始，默认开启禁用第三方Cookie。 而Chrome自v81开始引入了默认same-site: lax策略。 自此主流浏览器都默认开始限制第三方Cookie。而IE则一直支持P3P策略来限制第三方Cookie。
+
+## 解决方案
+
+### IE
+
+针对IE, 一直可以使用P3P，而互联网广告巨头针对也有不少有意思的历史，有兴趣可以看 https://stackoverflow.com/questions/8048306/what-is-the-most-broad-p3p-header-that-will-work-with-ie。 
+
+具体设置可以参考https://www.lovelucy.info/ie-accept-third-party-cookie.html，详细参见 https://www.w3.org/TR/P3P/。
+
+
+### Firefox/Chrome
+
+SameSite策略默认支持Lax、None、Strict。https://github.com/GoogleChromeLabs/samesite-examples。
+
+如果要支持第三方Cookie，站点必须是https，并且在写Cookie的时候改为`Set-cookie: 3pcookie=value; SameSite=None; Secure`， 如果要兼容新老不同的浏览器，可以参考https://web.dev/samesite-cookie-recipes/。
+
+### Safari:
+
+可以使用`Storage Access API`，demo见 当前repo。 https://webkit.org/blog/8124/introducing-storage-access-api/。
+
+原理比较简单，先尝试写一个Cookie，例如 `_same_site_flag_=true, secure, sameSite=None`，如果服务端读到了，则认为same_site策略可用，否则使用`Storage Access API`尝试申请授权`document.requestStorageAccess()`.
+
+reference:
+
+- https://webkit.org/blog/8124/introducing-storage-access-api/
+- https://webkit.org/blog/8311/intelligent-tracking-prevention-2-0/
+- https://support.apple.com/zh-cn/guide/safari/sfri40732/13.0/mac/10.15
+- https://webkit.org/blog/10218/full-third-party-cookie-blocking-and-more/
