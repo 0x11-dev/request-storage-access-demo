@@ -2,7 +2,7 @@
 
 ## 背景
 
-Firefox 2019.09 宣布 从 firefox 69.0开始，默认开启禁用第三方Cookie。 Apple 2020.03 宣布从iPadOS 13.4 and Safari 13.1 on macOS开始，默认开启禁用第三方Cookie。 而Chrome自v81开始引入了默认same-site: lax策略。 自此主流浏览器都默认开始限制第三方Cookie。而IE则一直支持P3P策略来限制第三方Cookie。
+[Firefox 2019.09 宣布 从 firefox 69.0开始，默认开启禁用第三方Cookie](https://blog.mozilla.org/blog/2019/09/03/todays-firefox-blocks-third-party-tracking-cookies-and-cryptomining-by-default/)。 [Apple 2020.03 宣布从iPadOS 13.4 and Safari 13.1 on macOS开始，默认开启禁用第三方Cookie](https://webkit.org/blog/10218/full-third-party-cookie-blocking-and-more/)。 而Chrome自v81开始引入了默认same-site: lax策略。 自此主流浏览器都默认开始限制第三方Cookie。而IE则一直支持P3P策略来限制第三方Cookie。
 
 ## 解决方案
 
